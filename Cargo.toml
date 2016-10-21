@@ -1,7 +1,13 @@
 [package]
 name = "random_utils"
-version = "0.1.0"
+description = "Different random number utilities."
+repository = "https://github.com/szymonlipinski/random_utils"
+version = "0.2.0"
 authors = ["Szymon Lipiński <mabewlun@gmail.com>"]
+
+license = "MIT"
+
+include = ["**/*.rs", "Cargo.toml"]
 
 [dependencies]
 rand = "0.3"
