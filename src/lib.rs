@@ -15,15 +15,14 @@
 //!
 
 extern crate rand;
-use rand::Rng;
-
-
+use rand::{Rng, Rand};
+use num::traits::int::PrimInt;
 
 /// Returns random number from the range [low, high].
 ///
 /// The numbers are uniformly distributed over [low, high].
 #[allow(dead_code)]
-pub fn random_range(low: i32, high: i32) -> i32 {
+pub fn random_range<T: PrimInt>(low: T, high: T) -> T {
     
     if low > high {
         panic!("Low({}) is higher than high({}).", low, high);
