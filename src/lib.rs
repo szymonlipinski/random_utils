@@ -15,22 +15,30 @@
 //!
 
 extern crate rand;
-use rand::{Rng, Rand};
-use num::traits::int::PrimInt;
+extern crate num;
+
+use rand::{Rng};
+use std::ops::Add;
+use rand::distributions::range::SampleRange;
+use std::fmt::Display;
+
+use num::traits::{One};
 
 /// Returns random number from the range [low, high].
 ///
 /// The numbers are uniformly distributed over [low, high].
 #[allow(dead_code)]
-pub fn random_range<T: PrimInt>(low: T, high: T) -> T {
+pub fn random_range<T>(low: T, high: T) -> T
+    where T: PartialOrd + Add<Output=T> + SampleRange + Display + One
+{
     
     if low > high {
         panic!("Low({}) is higher than high({}).", low, high);
     }
 
     let mut rng = rand::thread_rng();
-    let higher = high + 1;
-    return rng.gen_range(low, higher);
+    let higher = high + T::one();
+    rng.gen_range::<T>(low, higher)
 }
 
 

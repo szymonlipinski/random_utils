@@ -11,3 +11,4 @@ include = ["**/*.rs", "Cargo.toml"]
 
 [dependencies]
 rand = "0.3"
+num = "*"
